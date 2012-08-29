@@ -288,7 +288,7 @@ bool mss_timer_check_expired(mss_timer_t hdl);
 *
 ******************************************************************************/
 #define MSS_TIMER_WAIT_EXPIRES(hdl, context)           \
-        do{while(mss_timer_check_elapsed(hdl) != true) \
+        do{while(mss_timer_check_expired(hdl) != true) \
            MSS_RETURN(context);}while(0)
 
 /**************************************************************************//**
