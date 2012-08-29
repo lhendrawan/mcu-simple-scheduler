@@ -1,0 +1,133 @@
+/**
+ * @page     MSS_EXAMPLES MSS Examples
+ *
+ * @subpage  MSS_GENERIC_EXAMPLES
+ * @subpage  MSS_TARGET_EXAMPLES
+ *
+ */
+
+/**
+ * @page     MSS_GENERIC_EXAMPLES MSS Generic Examples
+ *           
+ * MSS generic (hardware independent) examples/demos used mainly  for testing the MSS itself
+ * 
+ * The MSS Generic Examples includes:
+ *
+ * - MSS_TIMER_EXAMPLE:
+ *           This is a simple example application showing basic usage of
+ *           MSS timer module. This example also shows how to use one
+ *           physical task code for several (two) tasks.
+ *           There are basically two tasks implemented, but both uses the
+ *           same code task_app. The difference between the task is only
+ *           the task parameter pointer passed to each task. Each task
+ *           will toggle a LED with different period.
+ *           If the application works correctly, LED1 should toggle every
+ *           500ms while LED2 toggling every 1000 ms.
+ *
+ * - MSS_EVENT_EXAMPLE:
+ *           This is a simple example application showing basic usage of
+ *           MSS event module.
+ *           There are two tasks implemented in the application: task_1 and
+ *           task_2. The first task task_1 will periodically send two types
+ *           of events to the task_2. The second task task_2 will toggle a
+ *           LED upon receiving certain event.
+ *            If the application works correctly, LED1 should toggle every
+ *           500ms while LED2 toggling every 1000 ms.
+ * 
+ * - MSS_MQUE_EXAMPLE:
+ *           This is a simple example application showing basic usage of
+ *           MSS message queue (mque) module.
+ *           There are two tasks implemented in this example: task_1 and
+ *           task_2. The second task task_2 will periodically send
+ *           ASCII messages to the task_1 via the message queue. The first
+ *           task task_1 will toggle a LED upon receiving certain message.
+ *           If the application works correctly, LED2 should toggle every
+ *           1000ms while LED1 toggling every 500 ms.
+ *
+ * - MSS_SEMA_EXAMPLE:
+ *           This example shows a basic application example of using MSS
+ *           Semaphore module.
+ *           There are two tasks implemented in this module: task_1 and
+ *           task_2. Each task's job is basically to toggle a LED (task_1
+ *           toggling LED1, task_2 toggling LED2) with different period.
+ *           However before a task tries to turn on a LED, it will first try
+ *           to wait for the created semaphore, and it will block as long as
+ *           the semaphore is not available (locked by the other task).
+ *           If the example runs correctly, the LED2 can only blink as long
+ *           as LED1 is turned off. When LED1 is turned on, the LED2 will
+ *           stay off indicating task_2 is trying to wait for the semaphore
+ *           becoming available.
+ *
+ * - MSS_PREEMPTIVE_EXAMPLE:
+ *           This is a basic application showing MSS preemptive scheduling
+ *           capability.
+ *           There are basically three tasks in the application:
+ *           int_task, higher_prio_task, and lower_prio_task. int_task has
+ *           the highest priority (index 0) while lower_prio_task has the
+ *           lowest priority (index 2). At the beginning, only
+ *           lower_prio_task is activated (see MSS_READY_TASK_BITS_INIT).
+ *           When lower_prio_task runs, it will periodically sends an event
+ *           to activate  higher_prio_task, but it will never release
+ *           intentionally the scheduler by calling MSS_RETURN() or any other
+ *           macro functions which encapsulates the MSS_RETURN().
+ *           However since the scheduler is working preemptively, it will
+ *           allow the higher_prio_task to run directly after the event has
+ *           been sent and it will preempt the lower_prio_task. What the
+ *           higher_prio_task does is basically toggling LED2 with a delay
+ *           loop without releasing the scheduler.
+ *           The int_task will be activated periodically from a hardware
+ *           timer interrupt. The task will also preempt either
+ *           lower_prio_task or higher_prio_task and do toggling of LED1.
+ *           If the demo runs correctly, the LED2 will be toggled
+ *           periodically by higher_prio_task indicating higher_prio_task
+ *           preempting the lower_prio_task, while sometime the LED1
+ *           toggled by int_task might also blink indicating that int_task
+ *           preempting either the higher_prio_task if LED2 is turned on
+ *           or the lower_prio_task if LED2 is turned off.
+ * 
+ * - MSS_FOOTPRINT_EXAMPLE:
+ *           This is not a working demo, instead it is used for measuring the
+ *           basic memory footprint of MSS
+ *
+ */
+
+/** 
+ * @page     MSS_TARGET_EXAMPLES MSS Target Specific Examples
+ *           MSS target specific (hardware dependent) examples/demos
+ *
+ * @subpage  MSS_TARGET_EXAMPLE_MSPEXP430G2
+ * @subpage  MSS_TARGET_EXAMPLE_MSPEXP430FR5739
+ */
+
+/** 
+ * @page     MSS_TARGET_EXAMPLE_MSPEXP430G2 MSS Target Specific Examples for MSP-EXP430G2
+ *
+ * MSS target specific (hardware dependent) examples/demos for MSP-EXP430G2 Launchpad
+ *
+ * - LED_BOOSTER_PACK_DEMO_APP: 
+ *           This is a demo of MSS running on MSP430G2452 target device on the
+ *           MSP-EXP430G2 Launchpad with MSP-LED8x8-BOOSTERPACK from Olimex
+ *           (https://www.olimex.com/dev/msp-led8x8.html).
+ *           This demo shows how MSS can work with all features enabled.
+ *           To play with the demo, press S2 button to switch between running
+ *           text demo and animation demo, and give a strong input on the
+ *           microphone to start/stop the buzzer playing a song.
+ *
+ * - LED_BOOSTERPACK_CASCADE_DEMO_APP: 
+ *          This is a demo of MSS running on MSP430G2452 target device on the
+ *           MSP-EXP430G2 Launchpad with MSP-LED8x8-BOOSTERPACK
+ *           (https://www.olimex.com/dev/msp-led8x8.html) and MOD-LED8x8
+ *           (https://www.olimex.com/dev/index.html) from Olimex.
+ *           To play with the demo, press S2 button to switch on/off the
+ *           buzzer playing a song, and give input at the microphone to 
+ *           accelerate the running text
+ *
+ */
+
+/** 
+ * @page     MSS_TARGET_EXAMPLE_MSPEXP430FR5739 MSS Target Specific Examples for MSP-EXP430FR5739
+ *           MSS target specific (hardware dependent) examples/demos for MSP-EXP430FR5739
+ *
+ * Currently no demo available
+ */
+ 

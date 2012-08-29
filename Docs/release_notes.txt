@@ -1,0 +1,29 @@
+/** 
+ * @page REL_NOTES Release Notes  
+ *
+ * @subpage REL_NOTES_V_0_2_0
+ */
+
+/** 
+ * @page REL_NOTES_V_0_2_0  v0.2.0 Release Notes
+ *
+ *  @section NOTES Notes:
+ *   - Hello World!
+ *   - IDE used:
+ *       - IAR EWB MSP430 version 5.40.6
+ *       - Code Composer Studio version 5.2.1.00018 - NOTE: importing CCS project shall 
+ *         be done by unchecking the "Copy projects into workspace" option
+ *
+ * @section CHANGES Changes:
+ *   -
+ *
+ * @section BUG_FIX Bug fix: 
+ *   -
+ *
+ * @section FUTURE_PLAN Future Plan:
+ *   - Supporting MSP GCC compiler for MSP430 microcontrollers
+ *   - New platform supports: 
+ *      - C2000 Piccolo Launchpad
+ *      - Stellaris ARM Cortex -M4F Launchpad 
+ *
+ */

@@ -1,0 +1,67 @@
+/** 
+ * @page FAQ Frequently Asked Questions (FAQ) v0.2.0
+ *
+ * <p>
+ * @b Q1: Why another embedded operating system/scheduler?
+ * <p>
+ * @b A1: Because i can :) .. no, kidding. . basically programming has always been a hobby and s passion for
+ *        me personally. I have been collecting the basic concepts of this light-weight multi-tasking 
+ *        system from my working experiences, and one night i just decided to start working on MSS.
+ * <br> <br>
+ *
+ * <p>
+ * @b Q2: Which scheduling policies does MSS support?
+ * <p>
+ * @b A2: MSS supports cooperative (tasks will be executed as long as it wants) and preemptive 
+ *        (high priority tasks will preempt the lower prioirty tasks) scheduling policy. 
+ *        Refer to MSS_PREEMPTIVE_SCHEDUILING configuration option in mss_cfg.h.
+ * <br> <br>
+ *
+ * <p>
+ * @b Q3: What is the maximum number of tasks running on MSS?
+ * <p>
+ * @b A3: Although it hasn't been really tested, MSS should be able to run either 8, 16, 32, and 64 tasks.
+ *        Refer to mss_hal_int.h.
+ * <br> <br>
+ *
+ * <p>
+ * @b Q4: How big is the memory footprint of MSS?
+ * <p>
+ * @b A4: Basically the MSS_FOOTPRINT project is created for answering this question. For MSP430 Value Line
+ *        platform and all activated module, it will take around 1 KB of Flash and 120 bytes of RAM.
+ * <br> <br>
+ * <p>
+ *
+ * @b Q5: Which platforms are supported currently by MSS?
+ * <p>
+ * @b A5: Refer to Overview page.
+ * <br> <br>
+ *
+ * @b Q6: How to import CCS (Code Composer Studio) example projects?
+ * <p>
+ * @b A6: When trying to import the example projects, the option "Copy projects into workspace" shall not
+ *        be checked.
+ * <br>
+ * <img src="mss_ccs_import_project.png"/> 
+ * <br> <br>
+ *
+ * <p>
+ * @b Q7: What's wrong with the odd English here in MSS?
+ * <p>
+ * @b A7: Well.. English is not my native language, and sorry for any confussing sentences and wording. Would be
+ *        glad to get any feedback on this "language issue" also :) 
+ * <br> <br>
+ *
+ */ 
+
+
+
+
+
+
+
+
+
+
+
+
