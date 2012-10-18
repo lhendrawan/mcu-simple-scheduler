@@ -32,7 +32,7 @@
 * 
 * @brief    MSS device specific internal module header file
 * 
-* @version  0.2.0
+* @version  0.2.1
 *
 * @author   Leo Hendrawan
 * 

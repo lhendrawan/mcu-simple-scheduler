@@ -32,7 +32,7 @@
 * 
 * @brief    mcu simple scheduler internal module header file
 * 
-* @version  0.2.0
+* @version  0.2.1
 *
 * @author   Leo Hendrawan
 * 
@@ -80,6 +80,7 @@ extern const uint16_t mss_bitpos_to_bit[16];
  *  mss timer tick counter
  */
 extern mss_timer_tick_t mss_timer_tick_cnt;
+
 #endif /* (MSS_TASK_USE_TIMER == TRUE) */
 
 //*****************************************************************************

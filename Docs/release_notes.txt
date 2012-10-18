@@ -27,3 +27,24 @@
  *      - Stellaris ARM Cortex -M4F Launchpad 
  *
  */
+
+/** 
+ * @page REL_NOTES_V_0_2_1  v0.2.1 Release Notes
+ *
+ *  @section NOTES Notes:
+ *   - some improvement
+ *
+ * @section CHANGES Changes:
+ *   - improvement in timer module to avoid lost timer hardware tick
+ *   - moving display and buzzer data from LED boosterpack demo to single file demo_cfg.h 
+ *
+ * @section BUG_FIX Bug fix: 
+ *   -
+ *
+ * @section FUTURE_PLAN Future Plan:
+ *   - Supporting MSP GCC compiler for MSP430 microcontrollers
+ *   - New platform supports: 
+ *      - C2000 Piccolo Launchpad
+ *      - Stellaris ARM Cortex -M4F Launchpad 
+ *
+ */

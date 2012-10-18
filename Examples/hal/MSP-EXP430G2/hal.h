@@ -33,7 +33,7 @@
 * @brief    hardware abstraction layer (hal) module for MSS demo on
 *           MSP-EXP430G2 Launchpad board
 * 
-* @version  0.2.0
+* @version  0.2.1
 *
 * @author   Leo Hendrawan
 * 

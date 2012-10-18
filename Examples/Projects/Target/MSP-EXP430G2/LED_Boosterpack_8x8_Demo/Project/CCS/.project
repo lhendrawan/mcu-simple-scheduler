@@ -92,6 +92,11 @@
 			<locationURI>PARENT-2-PROJECT_LOC/Source/demo_app.h</locationURI>
 		</link>
 		<link>
+			<name>demo_cfg.h</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Source/demo_cfg.h</locationURI>
+		</link>
+		<link>
 			<name>driver/buzzer.c</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Source/driver/buzzer.c</locationURI>

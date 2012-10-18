@@ -32,7 +32,7 @@
 * 
 * @brief    MSP430 Launchpad LED Boosterpack Cascade MSS demo source file
 *
-* @version  0.2.0
+* @version  0.2.1
 * 
 * @author   Leo Hendrawan
 *

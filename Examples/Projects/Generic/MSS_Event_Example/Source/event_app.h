@@ -32,7 +32,7 @@
 * 
 * @brief    mss event application example header file
 * 
-* @version  0.2
+* @version  0.2.1
 *
 * @author   Leo Hendrawan
 * 

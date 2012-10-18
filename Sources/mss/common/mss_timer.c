@@ -32,7 +32,7 @@
 * 
 * @brief    mcu simple scheduler timer module
 *
-* @version  0.2.0
+* @version  0.2.1
 *
 * @author   Leo Hendrawan
 * 
@@ -174,7 +174,18 @@ mss_timer_t mss_timer_create(uint8_t owner_task_id)
 ******************************************************************************/
 mss_timer_tick_t mss_timer_get_tick_cnt(void)
 {
-  return mss_timer_tick_cnt;
+  mss_int_flag_t int_flag;
+  mss_timer_tick_t cur_tick;
+
+  MSS_ENTER_CRITICAL_SECTION(int_flag);
+
+  // this should be an atomic process since timer counter can be wider
+  // than CPU register
+  cur_tick = mss_timer_tick_cnt;
+
+  MSS_LEAVE_CRITICAL_SECTION(int_flag);
+
+  return cur_tick;
 }
 
 /**************************************************************************//**
@@ -345,55 +356,94 @@ bool mss_timer_check_expired(mss_timer_t hdl)
 ******************************************************************************/
 bool mss_timer_tick(void)
 {
+  static bool timer_tick_running = false;
+  static mss_timer_tick_t timer_tick_cnt = 0;
   struct mss_timer_tbl_t *youngest_tmr;
   bool ret = false, loop;
   mss_int_flag_t int_flag;
 
   MSS_ENTER_CRITICAL_SECTION(int_flag);
 
+  if(timer_tick_running == true)
+  {
+	// return false since this function is already running and now called
+	// in different ISR context
+    MSS_LEAVE_CRITICAL_SECTION(int_flag);
+    return false;
+  }
+
+  // set flag to indicate timer tick is already running
+  timer_tick_running = true;
+
+  // copy youngest timer directly to local timer tick variable
+  // to speed up the process
+  youngest_tmr = llist_touch_first(active_timer_llist);
+  if(youngest_tmr != NULL)
+  {
+    timer_tick_cnt = youngest_tmr->expired_tick;
+  }
+
   do
   {
-	loop = false;
+	if(timer_tick_cnt != mss_timer_tick_cnt)
+	{
+      // increment timer tick
+      timer_tick_cnt++;
+	}
 
-    // check for expired timer
-    youngest_tmr = llist_touch_first(active_timer_llist);
-    if(youngest_tmr != NULL)
-    {
-      if(youngest_tmr->expired_tick == mss_timer_tick_cnt)
-      {
-        // wake up task
-        mss_activate_task_int(youngest_tmr->task_id);
+	do
+	{
+      // reset loop flag
+      loop = false;
 
-        // change timer state by shifting left one bit the state variable
-        // which will change from running to expired in both one-shot and
-        // periodic mode or from expired periodic to overflow
-        youngest_tmr->state <<= 1;
+      // check for expired timer
+      youngest_tmr = llist_touch_first(active_timer_llist);
+	  if(youngest_tmr != NULL)
+	  {
+		if(youngest_tmr->expired_tick == timer_tick_cnt)
+		{
+		  // wake up task
+		  mss_activate_task_int(youngest_tmr->task_id);
 
-        // remove timer object from active timer list
-        llist_get_first(active_timer_llist);
+          // change timer state by shifting left one bit the state variable
+          // which will change from running to expired in both one-shot and
+          // periodic mode or from expired periodic to overflow
+          youngest_tmr->state <<= 1;
 
-        // if a periodic timer, returns to the active timer list
-        if(youngest_tmr->reload_tick > 0)
-        {
-          // update timer tick first
-          youngest_tmr->expired_tick = mss_timer_tick_cnt +
-        		   youngest_tmr->reload_tick;
+          // remove timer object from active timer list
+          llist_get_first(active_timer_llist);
 
-          // put the timer into the active timer linked list
-          llist_add_first(active_timer_llist, youngest_tmr);
+          // if a periodic timer, returns to the active timer list
+          if(youngest_tmr->reload_tick > 0)
+          {
+            // update timer tick first
+            youngest_tmr->expired_tick = timer_tick_cnt +
+                                         youngest_tmr->reload_tick;
 
-          // sort the active timer list
-          llist_sort(active_timer_llist, timer_cmp);
+            // put the timer into the active timer linked list
+            llist_add_first(active_timer_llist, youngest_tmr);
+
+            // sort the active timer list
+            llist_sort(active_timer_llist, timer_cmp);
+          }
+
+          // return true
+          ret = true;
+
+          // do another loop for checking simultaneously timer ticks
+          loop = true;
+
+          // enable interrupt in between the process
+          MSS_LEAVE_CRITICAL_SECTION(int_flag);
+          MSS_ENTER_CRITICAL_SECTION(int_flag);
         }
-
-        // return true
-        ret = true;
-
-        // do another loop for checking simultaneously timer ticks
-        loop = true;
       }
-    }
-  }while(loop == true);
+    }while(loop == true);
+  }while(timer_tick_cnt != mss_timer_tick_cnt);
+
+
+  // reset flag
+  timer_tick_running = false;
 
   MSS_LEAVE_CRITICAL_SECTION(int_flag);
 

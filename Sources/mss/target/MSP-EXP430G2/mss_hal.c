@@ -32,7 +32,7 @@
 * 
 * @brief    mcu simple scheduler HAL (hardware abstraction layer) module
 *
-* @version  0.2.0
+* @version  0.2.1
 *
 * @author   Leo Hendrawan
 * 
@@ -242,11 +242,11 @@ __interrupt void WDT_ISR(void)
   if(internal_tick++ & 0x01)
   {
     // increment mss timer tick
-    mss_timer_tick_cnt++;
-  
+	mss_timer_tick_cnt++;
+
     if(delay_timer_cnt)
     {
-        // decrement counter
+      // decrement counter
       delay_timer_cnt--;
     }
 
@@ -254,7 +254,7 @@ __interrupt void WDT_ISR(void)
     {
       // it is ok to enable interrupt now
       __enable_interrupt();
-    
+
       // wake up CPU if MSS is in sleep mode
       if(mss_timer_tick())
       {

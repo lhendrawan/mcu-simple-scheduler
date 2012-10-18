@@ -32,7 +32,7 @@
 *
 * @brief    driver module for buzzer on MSP430 LED Matrix Boosterpack
 *
-* @version  0.2.0
+* @version  0.2.1
 * 
 * @author   Leo Hendrawan
 *

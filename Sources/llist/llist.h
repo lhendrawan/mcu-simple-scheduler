@@ -32,7 +32,7 @@
 * 
 * @brief    single linked list library header file
 * 
-* @version  0.2.0
+* @version  0.2.1
 *
 * @author   Leo Hendrawan
 * 
