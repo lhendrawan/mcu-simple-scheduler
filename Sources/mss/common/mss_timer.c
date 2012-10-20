@@ -54,7 +54,7 @@
 // Global variables 
 //*****************************************************************************
 
-// mss timer tick counter
+// mss hardware timer tick counter
 mss_timer_tick_t mss_timer_tick_cnt = 0;
 
 //*****************************************************************************
@@ -356,8 +356,10 @@ bool mss_timer_check_expired(mss_timer_t hdl)
 ******************************************************************************/
 bool mss_timer_tick(void)
 {
-  static bool timer_tick_running = false;
+  // local timer tick
   static mss_timer_tick_t timer_tick_cnt = 0;
+  // flag indicating whether the timer tick function is already running
+  static bool timer_tick_running = false;
   struct mss_timer_tbl_t *youngest_tmr;
   bool ret = false, loop;
   mss_int_flag_t int_flag;
@@ -375,16 +377,18 @@ bool mss_timer_tick(void)
   // set flag to indicate timer tick is already running
   timer_tick_running = true;
 
-  // copy youngest timer directly to local timer tick variable
-  // to speed up the process
-  youngest_tmr = llist_touch_first(active_timer_llist);
-  if(youngest_tmr != NULL)
-  {
-    timer_tick_cnt = youngest_tmr->expired_tick;
-  }
+  // copy hardware timer count tick to local timer tick
+  timer_tick_cnt = mss_timer_tick_cnt;
 
+  // loop in case hardware timer tick interrupt occurs between
+  // long active timer list processing
   do
   {
+	// if local timer tick is different than hardware timer tick,
+	// it means that the hardware timer has fired while the timer tick
+	// function is still processing the active timer list. Therefore
+	// the timer tick function shall update the local timer and continue
+	// processing the active timer list
 	if(timer_tick_cnt != mss_timer_tick_cnt)
 	{
       // increment timer tick
@@ -430,7 +434,7 @@ bool mss_timer_tick(void)
           // return true
           ret = true;
 
-          // do another loop for checking simultaneously timer ticks
+          // do another loop for checking simultaneous timer ticks
           loop = true;
 
           // enable interrupt in between the process

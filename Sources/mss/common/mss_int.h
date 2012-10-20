@@ -77,7 +77,7 @@ extern const uint16_t mss_bitpos_to_bit[16];
 
 #if (MSS_TASK_USE_TIMER == TRUE)
 /** mss_timer_tick_cnt
- *  mss timer tick counter
+ *  mss hardware timer tick counter
  */
 extern mss_timer_tick_t mss_timer_tick_cnt;
 
