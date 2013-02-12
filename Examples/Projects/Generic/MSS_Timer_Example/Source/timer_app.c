@@ -1,5 +1,5 @@
 /******************************************************************************
-* Copyright (c) 2012, Leo Hendrawan
+* Copyright (c) 2012-2013, Leo Hendrawan
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -162,7 +162,7 @@ void task_app(void *param)
 
   while(1)
   {
-     // toggle LED
+    // toggle LED
 	hal_toggle_led(variables->led_num);
 
     // delay
