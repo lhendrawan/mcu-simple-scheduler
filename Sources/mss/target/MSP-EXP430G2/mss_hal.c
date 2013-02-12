@@ -1,5 +1,5 @@
 /******************************************************************************
-* Copyright (c) 2012, Leo Hendrawan
+* Copyright (c) 2012-2013, Leo Hendrawan
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -117,7 +117,7 @@ void mss_hal_init(void)
   
 #if (MSS_PREEMPTIVE_SCHEDULING == TRUE)
   // enable interrupt
-  CACTL1 = CAIE;
+  IE1 = NMIIE;
 #endif /* (MSS_PREEMPTIVE_SCHEDULING == TRUE) */
 }
 
@@ -177,9 +177,9 @@ void mss_hal_sleep(mss_timer_tick_t sleep_timeout)
 void mss_hal_trigger_sw_int(void)
 {
   // generate interrupt by setting the interrupt flag
-  if(!(CACTL1 & CAIFG))
+  if(!(IFG1 & NMIIFG))
   {
-    CACTL1 |= CAIFG;
+    IFG1 |= NMIIFG;
   }
 }
 #endif /* (MSS_PREEMPTIVE_SCHEDULING == TRUE) */
@@ -205,7 +205,7 @@ uint8_t mss_get_highest_prio_task(mss_task_bits_t ready_bits)
 {
   uint8_t i;
 
-  for(i=0 ; i<(sizeof(mss_int_flag_t)*8) ; i++)
+  for(i=0 ; i<(sizeof(mss_task_bits_t)*8) ; i++)
   {
     if(ready_bits & mss_bitpos_to_bit[i])
     {
@@ -277,11 +277,11 @@ __interrupt void WDT_ISR(void)
 * @return     -
 *
 ******************************************************************************/
-#pragma vector=COMPARATORA_VECTOR
+#pragma vector=NMI_VECTOR
 __interrupt void SwInt_ISR(void)
 {
   // clear flag
-  CACTL1 &= ~CAIFG;
+  IFG1 &= ~NMIIFG;
 
   // enable interrupt
   __enable_interrupt();

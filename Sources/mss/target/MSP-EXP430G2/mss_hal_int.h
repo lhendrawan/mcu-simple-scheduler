@@ -1,5 +1,5 @@
 /******************************************************************************
-* Copyright (c) 2012, Leo Hendrawan
+* Copyright (c) 2012-2013, Leo Hendrawan
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -61,37 +61,6 @@
  *  once in @ref mss_run() function.
  */
 #define MSS_ENABLE_GLOBAL_INTERRUPT()       __enable_interrupt()
-
-/** mss_task_bits_t
- *  task bits data type - this data type is mainly used to represent a task
- *  (state), and therefore the @ref MSS_NUM_OF_TASKS can not exceed the number
- *  of bits in this data type
- */
-typedef uint16_t mss_task_bits_t;
-
-/** MSS_TASK_BIT_POS
- *  array of constant containing task bit position values - used a lot for
- *  setting or resetting a bit in the @ref mss_task_bits_t data type
- */
-#define MSS_TASK_BIT_POS                    \
-{                                           \
-  0x0001, 0x0002, 0x0004, 0x0008,           \
-  0x0010, 0x0020, 0x0040, 0x0080,           \
-  0x0100, 0x0200, 0x0400, 0x0800,           \
-  0x1000, 0x2000, 0x4000, 0x8000            \
-}
-
-/*----------------------------------------------------------------------------
-   example if mss_task_bits_t is implemented as uint8_t
-
-typedef uint8_t mss_task_bits_t
-
-#define MSS_TASK_BIT_POS                          \
-{                                                 \
-  0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80  \
-}
-
-----------------------------------------------------------------------------*/
 
 
 //*****************************************************************************

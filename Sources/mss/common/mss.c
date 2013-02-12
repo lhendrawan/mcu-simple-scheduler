@@ -1,5 +1,5 @@
 /******************************************************************************
-* Copyright (c) 2012, Leo Hendrawan
+* Copyright (c) 2012-2013, Leo Hendrawan
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -67,7 +67,7 @@ mss_task_bits_t mss_task_reactivated = 0;
 mss_task_bits_t mss_ready_task_bits = MSS_READY_TASK_BITS_INIT;
 
 /** mss_bitpos_to_bit
- *  table for converting bit position to 16 bit value
+ *  table for converting bit position to mss_task_bits_t bit value
  */
 const mss_task_bits_t mss_bitpos_to_bit[] = MSS_TASK_BIT_POS;
 
