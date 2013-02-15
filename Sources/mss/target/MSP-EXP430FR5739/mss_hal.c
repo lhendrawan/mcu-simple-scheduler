@@ -107,7 +107,7 @@ void mss_hal_init(void)
   
 #if (MSS_PREEMPTIVE_SCHEDULING == TRUE)
   // enable interrupt
-  SFRIE1 |= NMIIE;
+  CDINT |= CDIE;
 #endif /* (MSS_PREEMPTIVE_SCHEDULING == TRUE) */
 }
 
@@ -167,7 +167,7 @@ void mss_hal_sleep(mss_timer_tick_t sleep_timeout)
 void mss_hal_trigger_sw_int(void)
 {
   // generate interrupt by setting the interrupt flag
-  SFRIFG1 |= NMIIFG;
+  CDINT |= CDIFG;
 }
 #endif /* (MSS_PREEMPTIVE_SCHEDULING == TRUE) */
 
@@ -258,11 +258,11 @@ __interrupt void TimerA1_CCR0_ISR(void)
 * @return     -
 *
 ******************************************************************************/
-#pragma vector=UNMI_VECTOR
+#pragma vector=COMP_D_VECTOR
 __interrupt void SwInt_ISR(void)
 {
   // clear flag
-  SFRIFG1 &= ~NMIIFG;
+  CDINT &= ~CDIFG;
 
   // enable interrupt
   __enable_interrupt();

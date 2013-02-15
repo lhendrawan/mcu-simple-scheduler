@@ -75,7 +75,7 @@ const mss_task_bits_t mss_bitpos_to_bit[] = MSS_TASK_BIT_POS;
 /** mss_task_preempted
  *  flag to indicate whether a task is currently preempted by another task
  */
-mss_int_flag_t mss_task_preempted = 0;
+mss_task_bits_t mss_task_preempted = 0;
 #endif /* (MSS_PREEMPTIVE_SCHEDULING == TRUE) */
 
 //*****************************************************************************

@@ -117,7 +117,7 @@ void mss_hal_init(void)
   
 #if (MSS_PREEMPTIVE_SCHEDULING == TRUE)
   // enable interrupt
-  IE1 = NMIIE;
+  CACTL1 = CAIE;
 #endif /* (MSS_PREEMPTIVE_SCHEDULING == TRUE) */
 }
 
@@ -177,10 +177,7 @@ void mss_hal_sleep(mss_timer_tick_t sleep_timeout)
 void mss_hal_trigger_sw_int(void)
 {
   // generate interrupt by setting the interrupt flag
-  if(!(IFG1 & NMIIFG))
-  {
-    IFG1 |= NMIIFG;
-  }
+  CACTL1 |= CAIFG;
 }
 #endif /* (MSS_PREEMPTIVE_SCHEDULING == TRUE) */
 
@@ -277,11 +274,11 @@ __interrupt void WDT_ISR(void)
 * @return     -
 *
 ******************************************************************************/
-#pragma vector=NMI_VECTOR
+#pragma vector=COMPARATORA_VECTOR
 __interrupt void SwInt_ISR(void)
 {
   // clear flag
-  IFG1 &= ~NMIIFG;
+  CACTL1 &= ~CAIFG;
 
   // enable interrupt
   __enable_interrupt();
