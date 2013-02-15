@@ -1,5 +1,5 @@
 /******************************************************************************
-* Copyright (c) 2012, Leo Hendrawan
+* Copyright (c) 2012-2013, Leo Hendrawan
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -80,7 +80,7 @@
  *  initialization value of MSS task ready bits. Each bit set represent the
  *  task which is ready to be executed right at the beginning.
  */
-#define MSS_READY_TASK_BITS_INIT         (0x001F)
+#define MSS_READY_TASK_BITS_INIT         (0x1F)
 
 /** MSS_PREEMPTIVE_SCHEDULING
  *  set to TRUE to activate preemptive scheduling, otherwise the scheduler

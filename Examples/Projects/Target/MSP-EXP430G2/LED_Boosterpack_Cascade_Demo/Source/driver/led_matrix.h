@@ -1,5 +1,5 @@
 /******************************************************************************
-* Copyright (c) 2012, Leo Hendrawan
+* Copyright (c) 2012-2013, Leo Hendrawan
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -61,6 +61,10 @@
 #define LED_MATRIX_TI_LOGO       0x08, 0x38, 0x1F, 0x3F, 0x7C, 0xFC, 0x3C, 0x18
 
 #define LED_MATRIX_CHAR_BLANK    0x00
+
+#define LED_MATRIX_CHAR_EXCLAMATION_MARK   0x5E
+
+#define LED_MATRIX_CHAR_HEART    0x0C, 0x1E, 0x3C, 0x78, 0x3C, 0x1E, 0x0C
 
 #define LED_MATRIX_CHAR_A        0x7C, 0x12, 0x12, 0x7C
 #define LED_MATRIX_CHAR_B        0x7E, 0x4A, 0x4E, 0x78

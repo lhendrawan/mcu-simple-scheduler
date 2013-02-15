@@ -1,5 +1,5 @@
 /******************************************************************************
-* Copyright (c) 2012, Leo Hendrawan
+* Copyright (c) 2012-2013, Leo Hendrawan
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -61,11 +61,23 @@
 #define SPI_CLK_OUT_PIN		BIT5  // P1.5
 #define SPI_DATA_OUT_PIN	BIT6  // P1.6
 
+#if defined (__MSP430G2452__)
+  #define LED_MATRIX_INT_USI_SPI
+#elif defined (__MSP430G2553__)
+  #define LED_MATRIX_INT_GPIO
+  #define SPI_BIT_BANGING_DELAY()         __delay_cycles(5)
+#else
+  #error This demo only supports either MSP430G2452 or MSP430G2553 as target device
+#endif
+
 
 //*****************************************************************************
 // Internal function declarations
 //*****************************************************************************
 
+#ifdef LED_MATRIX_INT_GPIO
+void spi_send_bit_bang(uint8_t byte);
+#endif
 
 //*****************************************************************************
 // External functions
@@ -90,14 +102,20 @@ void led_matrix_init(void)
   // set latch pin to inactive
   P1OUT &= ~DATA_LATCH_PIN;
 
+#if defined (LED_MATRIX_INT_USI_SPI)
   // configure SPI
   USICTL0 |= USISWRST;                      // USI in reset
   USICTL0 |= USILSB;                        // Least Significant Bit first
-  USICTL0 |= USIPE7 + USIPE6 + USIPE5 + USIMST + USIOE; // SPI Master
+  USICTL0 |= USIPE7 + USIPE6 + USIPE5 + USIMST + USIOE; // Port, SPI Master
   USICTL1 |= USICKPH;                       // flag remains set
-  USICKCTL = USISSEL_2 + USIDIV_1;          // SMCLK, inactive low, /2 divider
+  //USICKCTL = USISSEL_2 + USIDIV_1;          // SMCLK, inactive low, /2 divider
+  USICKCTL = USISSEL_2 + USIDIV_3;          // SMCLK, inactive low, /8 divider
   USICTL0 &= ~USISWRST;                     // USI released for operation
   USICNT |= USI16B + USIIFGCC;              // 16 bit mode; 16 bit to be transmitted/received
+#else
+  // set both GPIO for SPI communication low
+  P1OUT &= ~(SPI_DATA_OUT_PIN | SPI_CLK_OUT_PIN);
+#endif
 }
 
 /**************************************************************************//**
@@ -116,6 +134,7 @@ void led_matrix_send_row(uint8_t row, uint8_t data)
 {
   static const uint16_t row_byte[8] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80};
 
+#if defined (LED_MATRIX_INT_USI_SPI)
   // put data into the shift register
   USISRH = row_byte[(row&0x07)];
   USISRL = data;
@@ -126,6 +145,13 @@ void led_matrix_send_row(uint8_t row, uint8_t data)
   // wait until data finish
   while(!(USICTL1 & USIIFG));
   USICTL1 &= ~USIIFG;
+#else
+  // send first byte (data byte)
+  spi_send_bit_bang(data);
+
+  // send second byte (row data)
+  spi_send_bit_bang(row_byte[(row&0x07)]);
+#endif
   
 }
 
@@ -152,3 +178,51 @@ void led_matrix_output_latch(void)
 // Internal functions
 //*****************************************************************************
 
+#ifdef LED_MATRIX_INT_GPIO
+/**************************************************************************//**
+*
+* spi_send_bit_bang
+*
+* @brief      send a 8 bit (one byte) SPI data with bit-banging
+*
+* @param      byte     data to be sent
+*
+* @return     -
+*
+******************************************************************************/
+void spi_send_bit_bang(uint8_t byte)
+{
+  uint8_t i;
+
+  for(i=0 ; i<8 ; i++)
+  {
+	// send LSB
+	if(byte & 0x01)
+	{
+	  P1OUT |= SPI_DATA_OUT_PIN;
+	}
+	else
+	{
+	  P1OUT &= ~SPI_DATA_OUT_PIN;
+	}
+
+	// delay
+	SPI_BIT_BANGING_DELAY();
+
+	// set clock
+	P1OUT |= SPI_CLK_OUT_PIN;
+
+	// delay
+	SPI_BIT_BANGING_DELAY();
+
+	// reset clock
+	P1OUT &= ~SPI_CLK_OUT_PIN;
+
+	// shift right byte
+	byte >>= 1;
+  }
+
+  // reset SPI data line
+  P1OUT &= ~SPI_DATA_OUT_PIN;
+}
+#endif

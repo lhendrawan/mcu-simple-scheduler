@@ -1,5 +1,5 @@
 /******************************************************************************
-* Copyright (c) 2012, Leo Hendrawan
+* Copyright (c) 2012-2013, Leo Hendrawan
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -59,8 +59,8 @@
 //*****************************************************************************
 
 // running text shift period ini milliseconds
-#define RUNNING_TEXT_MOV_PERIOD_MAX_MS  (300)
-#define RUNNING_TEXT_MOV_PERIOD_MIN_MS  (25)
+#define RUNNING_TEXT_MOV_PERIOD_MAX_MS  (100)
+#define RUNNING_TEXT_MOV_PERIOD_MIN_MS  (50)
 #define RUNNING_TEXT_MOV_PERIOD_STEP_MS (25)
 
 // number of 8x8 cascade LED matrixes
@@ -69,99 +69,98 @@
 // moving text display data - see led_matrix.h for character definitions
 #define RUNNING_TEXT_DATA  \
 {                        \
-  LED_MATRIX_TI_LOGO,    \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_M,     \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_S,     \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_S,     \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_R,     \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_U,     \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_N,     \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_N,     \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_I,     \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_N,     \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_G,     \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_O,     \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_N,     \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_T,     \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_I,     \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_M,     \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_S,     \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_P,     \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_4,     \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_3,     \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_0,     \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_G,     \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_2,     \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_X,     \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_X,     \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_V,     \
+  LED_MATRIX_CHAR_H,     \
   LED_MATRIX_CHAR_BLANK, \
   LED_MATRIX_CHAR_A,     \
   LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_L,     \
+  LED_MATRIX_CHAR_P,     \
   LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_U,     \
+  LED_MATRIX_CHAR_P, \
   LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_E,     \
-  LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_Y, \
   LED_MATRIX_CHAR_BLANK, \
   LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_L,     \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_B,     \
   LED_MATRIX_CHAR_BLANK, \
   LED_MATRIX_CHAR_I,     \
   LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_R,     \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_T,     \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_H,     \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_D,     \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_A,     \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_Y, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_D,     \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_A,     \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_V, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_I, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_D,     \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_EXCLAMATION_MARK, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_M,     \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_O,     \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_M,     \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_A,     \
+  LED_MATRIX_CHAR_BLANK, \
   LED_MATRIX_CHAR_N,     \
   LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_CHAR_E,     \
+  LED_MATRIX_CHAR_D,     \
   LED_MATRIX_CHAR_BLANK, \
   LED_MATRIX_CHAR_BLANK, \
   LED_MATRIX_CHAR_BLANK, \
   LED_MATRIX_CHAR_BLANK, \
-  LED_MATRIX_TI_LOGO,    \
+  LED_MATRIX_CHAR_D,     \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_A,     \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_D,     \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_HEART,     \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_Y,     \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_O,     \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_U,     \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_BLANK, \
+  LED_MATRIX_CHAR_BLANK, \
   LED_MATRIX_CHAR_BLANK, \
   LED_MATRIX_CHAR_BLANK, \
   LED_MATRIX_CHAR_BLANK, \
@@ -197,63 +196,51 @@
 }
 
 // buzzer tone data - see buzzer.h for buzzer tone definitions
+/* Happy 2nd Bday, David! Mom and Dad love you */
 #define BUZZER_TONE_DATA  \
 {                         \
-    {A3_TICK_CNT,  475},  \
+    {D4_TICK_CNT,  225},  \
     {PAUSE,        25},   \
-    {A3_TICK_CNT,  475},  \
+    {D4_TICK_CNT,  225},  \
     {PAUSE,        25},   \
-    {A3_TICK_CNT,  475},  \
+    {E4_TICK_CNT,  500},  \
+    {D4_TICK_CNT,  500},  \
+    {G4_TICK_CNT,  500},  \
+    {Gb4_TICK_CNT, 900},  \
+    {PAUSE,        100},   \
+\
+    {D4_TICK_CNT,  225},  \
     {PAUSE,        25},   \
-    {F3_TICK_CNT,  375},  \
-    {C4_TICK_CNT,  125},  \
-    {A3_TICK_CNT,  500},  \
-    {F3_TICK_CNT,  375},  \
-    {C4_TICK_CNT,  125},  \
-    {A3_TICK_CNT,  1000}, \
-    {E4_TICK_CNT,  475},  \
+    {D4_TICK_CNT,  225},  \
     {PAUSE,        25},   \
-    {E4_TICK_CNT,  475},  \
+    {E4_TICK_CNT,  500},  \
+    {D4_TICK_CNT,  500},  \
+    {A4_TICK_CNT,  500},  \
+    {G4_TICK_CNT,  900},  \
+    {PAUSE,        100},   \
+\
+    {D4_TICK_CNT,  225},  \
     {PAUSE,        25},   \
-    {E4_TICK_CNT,  475},  \
+    {D4_TICK_CNT,  225},  \
     {PAUSE,        25},   \
-    {F4_TICK_CNT,  375},  \
-    {C4_TICK_CNT,  125},  \
-    {Ab3_TICK_CNT, 500},  \
-    {F3_TICK_CNT,  375},  \
-    {C4_TICK_CNT,  125},  \
-    {A3_TICK_CNT,  1000}, \
-    {A4_TICK_CNT,  475},  \
+    {D5_TICK_CNT,  500},  \
+    {B4_TICK_CNT,  500},  \
+    {G4_TICK_CNT,  500},  \
+    {Gb4_TICK_CNT, 500},  \
+    {E4_TICK_CNT,  1250},  \
+    {PAUSE,        250},   \
+\
+    {C5_TICK_CNT,  225},  \
     {PAUSE,        25},   \
-    {A3_TICK_CNT,  350},  \
+    {C5_TICK_CNT,  225},  \
     {PAUSE,        25},   \
-    {A3_TICK_CNT,  125},  \
-    {A4_TICK_CNT,  475},  \
-    {PAUSE,        25},   \
-    {Ab4_TICK_CNT, 375},  \
-    {G4_TICK_CNT,  125},  \
-    {Gb4_TICK_CNT, 85},   \
-    {F4_TICK_CNT,  85},   \
-    {Gb4_TICK_CNT, 85},   \
-    {PAUSE,        250},  \
-    {Bb3_TICK_CNT, 250},  \
-    {Eb4_TICK_CNT, 500},  \
-    {D4_TICK_CNT,  375},  \
-    {Db4_TICK_CNT, 125},  \
-    {C4_TICK_CNT,  85},   \
-    {B3_TICK_CNT,  85},   \
-    {C4_TICK_CNT,  85},   \
-    {PAUSE,        250},  \
-    {F3_TICK_CNT,  250},  \
-    {Ab3_TICK_CNT, 500},  \
-    {F3_TICK_CNT,  375},  \
-    {C4_TICK_CNT,  125},  \
-    {A3_TICK_CNT,  500},  \
-    {F3_TICK_CNT,  375},  \
-    {C4_TICK_CNT,  125},  \
-    {A3_TICK_CNT,  1000}, \
-    {PAUSE,        2000}, \
-  }
+    {B4_TICK_CNT,  500},  \
+    {G4_TICK_CNT,  500},  \
+    {A4_TICK_CNT,  500},  \
+    {G4_TICK_CNT,  1500},  \
+\
+    {PAUSE,        4000},   \
+}
 
 
 

@@ -1,5 +1,5 @@
 /******************************************************************************
-* Copyright (c) 2012, Leo Hendrawan
+* Copyright (c) 2012-2013, Leo Hendrawan
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -479,25 +479,4 @@ __interrupt void ADC10_Isr(void)
   }
   
   sample_cnt++;
-}
-
-
-
-/**************************************************************************//**
-*
-* Trap_Isr
-*
-* @brief      Trap ISR handle function
-*
-* @param      -
-*
-* @return     -
-*
-******************************************************************************/
-#pragma vector=PORT2_VECTOR, USI_VECTOR, TIMER0_A1_VECTOR, TIMER0_A0_VECTOR, \
-               NMI_VECTOR
-__interrupt void Trap_Isr(void)
-{
-  // lock down the system
-  APP_ASSERT(0);
 }
