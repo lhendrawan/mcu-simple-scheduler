@@ -46,7 +46,7 @@
 <div class="contents">
 <div class="textblock"><p>The steps needed to create MSS application are described as follows:</p>
 <ul>
-<li>create (template files are available under &lt;ROOT_DIRECTORY&gt;/Sources/mss/templates/configuration and modify configuration files <a class="el" href="llist__cfg_8h.html" title="linked list library configuration header file">llist_cfg.h</a> and <a class="el" href="mss__cfg_8h.html" title="mcu simple scheduler configuration header file">mss_cfg.h</a>:<ul>
+<li>create and modify configuration files <a class="el" href="llist__cfg_8h.html" title="linked list library configuration header file">llist_cfg.h</a> and <a class="el" href="mss__cfg_8h.html" title="mcu simple scheduler configuration header file">mss_cfg.h</a> (template files are available under &lt;ROOT_DIRECTORY&gt;/Sources/mss/templates/configuration):<ul>
 <li><a class="el" href="llist__cfg_8h.html" title="linked list library configuration header file">llist_cfg.h</a> contains the maximum number of linked list in the application. MSS needs at least one linked list if MSS timer is activated, one for every message queues, and one for every memory blocks. Application might increase this number if necessary.</li>
 <li><a class="el" href="mss__cfg_8h.html" title="mcu simple scheduler configuration header file">mss_cfg.h</a> contains MSS main configurations:<ul>
 <li>Setting maximum number of tasks (MSS_NUM_OF_TASKS), list of tasks (MSS_TASK_LIST), initial value of task ready bits (MSS_READY_TASK_BITS_INIT) which represents whether a task shall be activated per default at the begining.</li>
@@ -74,7 +74,7 @@
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 14 2013 23:14:26 for MSS(MCUSimpleScheduler) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Mar 14 2013 23:41:46 for MSS(MCUSimpleScheduler) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.1
 </small></address>

@@ -98,8 +98,8 @@
  * @page CREATING_MSS_APPLICATION Creating MSS Application
  *
  * The steps needed to create MSS application are described as follows:
- * - create (template files are available under <ROOT_DIRECTORY>/Sources/mss/templates/configuration 
- *   and modify configuration files llist_cfg.h and mss_cfg.h:
+ * - create and modify configuration files llist_cfg.h and mss_cfg.h (template files are available 
+ *   under <ROOT_DIRECTORY>/Sources/mss/templates/configuration):
  *     - llist_cfg.h contains the maximum number of linked list in the application. MSS needs at least 
  *       one linked list if MSS timer is activated, one for every message queues, and one for every
  *       memory blocks. Application might increase this number if necessary.
