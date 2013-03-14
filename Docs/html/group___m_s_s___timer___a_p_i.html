@@ -17,7 +17,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">MSS(MCUSimpleScheduler)
-   &#160;<span id="projectnumber">v.0.2</span>
+   &#160;<span id="projectnumber">v.0.2.1</span>
    </div>
   </td>
  </tr>
@@ -115,7 +115,7 @@ MSS Timer API Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span>{<a class="code" href="group___m_s_s___timer___a_p_i.html#gafcd14550dfab4c216912a41e8d1b316f" title="start a mss timer to run in one shot mode for a given tick period. The owner task will be activated w...">mss_timer_start</a>(hdl, <a class="code" href="group___m_s_s___timer___a_p_i.html#ga1db0bde0547664999ee34b4fbe4b9436" title="macro function to convert time in milliseconds to mss timer ticks">MSS_TIMER_MS_TO_TICKS</a>(ms));  \</div>
-<div class="line">           while(mss_timer_check_elapsed(hdl) != <span class="keyword">true</span>)       \</div>
+<div class="line">           while(<a class="code" href="group___m_s_s___timer___a_p_i.html#gada996e3a869feb1e6f9cceb770d25583" title="check whether the timer has expired (timer state is either MSS_TIMER_STATE_EXPIRED_ONE_SHOT in one sh...">mss_timer_check_expired</a>(hdl) != <span class="keyword">true</span>)       \</div>
 <div class="line">           MSS_RETURN(context);}<span class="keywordflow">while</span>(0)</div>
 </div><!-- fragment -->
 <p>macro function to simulate delay in miliseconds. the mss task will be suspended during waiting the timer expiration </p>
@@ -272,7 +272,7 @@ MSS Timer API Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span>{<span class="keywordflow">while</span>(mss_timer_check_elapsed(hdl) != <span class="keyword">true</span>) \</div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span>{<span class="keywordflow">while</span>(<a class="code" href="group___m_s_s___timer___a_p_i.html#gada996e3a869feb1e6f9cceb770d25583" title="check whether the timer has expired (timer state is either MSS_TIMER_STATE_EXPIRED_ONE_SHOT in one sh...">mss_timer_check_expired</a>(hdl) != <span class="keyword">true</span>) \</div>
 <div class="line">           MSS_RETURN(context);}<span class="keywordflow">while</span>(0)</div>
 </div><!-- fragment -->
 <p>macro (blocking) function to wait until a timer expires. the mss task will be suspended during waiting the timer expiration </p>
@@ -530,7 +530,7 @@ MSS Timer API Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 29 2012 11:50:35 for MSS(MCUSimpleScheduler) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Mar 14 2013 23:14:26 for MSS(MCUSimpleScheduler) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.1
 </small></address>

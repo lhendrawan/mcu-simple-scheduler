@@ -54,8 +54,13 @@
  * microcontrollers with other basic features such as timers, event flags,
  * message queues, and semaphores.
  * Currently it is available for the following platform:
- *  - MSP430G2452 (MSP430 Value Line) on MSP-EXP430G2 Launchpad development kit
+ *  - MSP430G2452/MSP430G2553 (MSP430 Value Line) on MSP-EXP430G2 Launchpad 
+ *    development kit
  *  - MSP430FR5739 on MSP-EXP430FR5739 development kit
+ *
+ * Join and post questions/feedbacks for MSS at the 
+ * <a href="https://groups.google.com/forum/?fromgroups&hl=en#!forum/mss-disc">
+ * MSS Discussion Group</a>.
  *
  */
 

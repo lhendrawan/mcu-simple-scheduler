@@ -34,8 +34,15 @@
     <LI><OBJECT type="text/sitemap"><param name="Name" value="Bug fix:"><param name="Local" value="_r_e_l__n_o_t_e_s__v_0_2_0.html#BUG_FIX"><param name="ImageNumber" value="1"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="Future Plan:"><param name="Local" value="_r_e_l__n_o_t_e_s__v_0_2_0.html#FUTURE_PLAN"><param name="ImageNumber" value="1"></OBJECT>
     </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Name" value="v0.2.1 Release Notes"><param name="Local" value="_r_e_l__n_o_t_e_s__v_0_2_1.html"><param name="ImageNumber" value="11"></OBJECT>
+    <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="Notes:"><param name="Local" value="_r_e_l__n_o_t_e_s__v_0_2_1.html#NOTES"><param name="ImageNumber" value="1"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="Changes:"><param name="Local" value="_r_e_l__n_o_t_e_s__v_0_2_1.html#CHANGES"><param name="ImageNumber" value="1"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="Bug fix:"><param name="Local" value="_r_e_l__n_o_t_e_s__v_0_2_1.html#BUG_FIX"><param name="ImageNumber" value="1"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="Future Plan:"><param name="Local" value="_r_e_l__n_o_t_e_s__v_0_2_1.html#FUTURE_PLAN"><param name="ImageNumber" value="1"></OBJECT>
+    </UL>
   </UL>
-<LI><OBJECT type="text/sitemap"><param name="Name" value="Frequently Asked Questions (FAQ) v0.2.0"><param name="Local" value="_f_a_q.html"><param name="ImageNumber" value="11"></OBJECT>
+<LI><OBJECT type="text/sitemap"><param name="Name" value="Frequently Asked Questions (FAQ) v0.2.1"><param name="Local" value="_f_a_q.html"><param name="ImageNumber" value="11"></OBJECT>
 <LI><OBJECT type="text/sitemap"><param name="Name" value="API"><param name="Local" value="modules.html"><param name="ImageNumber" value="1"></OBJECT>
   <UL>
   <LI><OBJECT type="text/sitemap"><param name="Name" value="LLIST API"><param name="Local" value="group___l_l_i_s_t___a_p_i.html"><param name="ImageNumber" value="1"></OBJECT>
@@ -296,8 +303,6 @@
             <LI><OBJECT type="text/sitemap"><param name="Name" value="mss_hal_int.h"><param name="Local" value="mss__hal__int_8h.html"><param name="ImageNumber" value="1"></OBJECT>
               <UL>
               <LI><OBJECT type="text/sitemap"><param name="Name" value="MSS_ENABLE_GLOBAL_INTERRUPT"><param name="Local" value="mss__hal__int_8h.html#a365fd5d34719b5fc4410018fa19d766e"><param name="ImageNumber" value="11"></OBJECT>
-              <LI><OBJECT type="text/sitemap"><param name="Name" value="MSS_TASK_BIT_POS"><param name="Local" value="mss__hal__int_8h.html#a5186045f83218072d9e40f7f18141608"><param name="ImageNumber" value="11"></OBJECT>
-              <LI><OBJECT type="text/sitemap"><param name="Name" value="mss_task_bits_t"><param name="Local" value="mss__hal__int_8h.html#a344973d320d5f61563a9fd39c1e83ea2"><param name="ImageNumber" value="11"></OBJECT>
               </UL>
             </UL>
           </UL>

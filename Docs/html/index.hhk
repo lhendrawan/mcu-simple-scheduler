@@ -16,7 +16,7 @@
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="dev__types_8h.html#a8fe83ac76edc595f6b98cd4a4127aed5"><param name="Name" value="ERROR"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="dev__types_8h.html#aa93f0eb578d23995850d61f7d61c55c1"><param name="Name" value="FALSE"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="_f_a_q.html"><param name="Name" value="Frequently Asked Questions (FAQ) v0.2.0"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_f_a_q.html"><param name="Name" value="Frequently Asked Questions (FAQ) v0.2.1"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="_g_e_t__s_t_a_r_t.html"><param name="Name" value="Getting Started with MSS"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="group___l_l_i_s_t___a_p_i.html"><param name="Name" value="LLIST API"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="llist_8h.html"><param name="Name" value="llist.h"></OBJECT>
@@ -244,11 +244,6 @@
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="mss__hal_8c.html#aedf5f70b6f923892a61d3affda6842a8"><param name="Name" value="mss_hal_init"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="mss__hal__int_8h.html"><param name="Name" value="mss_hal_int.h"></OBJECT>
-  <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="mss__hal__int_8h.html#a365fd5d34719b5fc4410018fa19d766e"><param name="Name" value="MSS_ENABLE_GLOBAL_INTERRUPT"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="mss__hal__int_8h.html#a5186045f83218072d9e40f7f18141608"><param name="Name" value="MSS_TASK_BIT_POS"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="mss__hal__int_8h.html#a344973d320d5f61563a9fd39c1e83ea2"><param name="Name" value="mss_task_bits_t"></OBJECT>
-  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="mss__hal_8c.html#aa50fc745a249b3c0cfdca757ed168344"><param name="Name" value="mss_hal_sleep"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="mss__hal_8c.html#a0bbb8649d0a159bf4c029b0900b42769"><param name="Name" value="mss_hal_trigger_sw_int"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="group___m_s_s___general___a_p_i.html#ga6077a6fe18cc56749e8f2ccd8db4d888"><param name="Name" value="mss_init"></OBJECT>
@@ -376,8 +371,8 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="mss__sema_8h.html#ga8c75fdfcbb62d220887c6b0b6db43511"><param name="Name" value="MSS_SEMA_INVALID_HDL"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="mss__sema_8h.html#gae3add933858994a7de69903d9b358bb5"><param name="Name" value="mss_sema_post"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="mss__sema_8h.html#ga5bf297ed6cf2fafb6e57b6de14c60ac5"><param name="Name" value="mss_sema_t"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="mss__sema_8h.html#gab94636a54d93f269ea923127560ea832"><param name="Name" value="mss_sema_wait"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="mss__sema_8h.html#ga6fc9c2908436a8892bbf6b376e304556"><param name="Name" value="MSS_SEMA_WAIT"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="mss__sema_8h.html#gab94636a54d93f269ea923127560ea832"><param name="Name" value="mss_sema_wait"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="group___m_s_s___sema___a_p_i.html"><param name="Name" value="MSS_Sema_API"></OBJECT>
   <UL>
@@ -385,8 +380,8 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="group___m_s_s___sema___a_p_i.html#ga8c75fdfcbb62d220887c6b0b6db43511"><param name="Name" value="MSS_SEMA_INVALID_HDL"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="group___m_s_s___sema___a_p_i.html#gae3add933858994a7de69903d9b358bb5"><param name="Name" value="mss_sema_post"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="group___m_s_s___sema___a_p_i.html#ga5bf297ed6cf2fafb6e57b6de14c60ac5"><param name="Name" value="mss_sema_t"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="group___m_s_s___sema___a_p_i.html#gab94636a54d93f269ea923127560ea832"><param name="Name" value="mss_sema_wait"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="group___m_s_s___sema___a_p_i.html#ga6fc9c2908436a8892bbf6b376e304556"><param name="Name" value="MSS_SEMA_WAIT"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="group___m_s_s___sema___a_p_i.html#gab94636a54d93f269ea923127560ea832"><param name="Name" value="mss_sema_wait"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="group___m_s_s___sema___a_p_i.html#gac8d93f2742ec86b9076531b5ac944708"><param name="Name" value="mss_sema_create"></OBJECT>
   <UL>
@@ -408,12 +403,10 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="group___m_s_s___sema___a_p_i.html#ga5bf297ed6cf2fafb6e57b6de14c60ac5"><param name="Name" value="mss_sema.h"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="group___m_s_s___sema___a_p_i.html#ga5bf297ed6cf2fafb6e57b6de14c60ac5"><param name="Name" value="MSS_Sema_API"></OBJECT>
   </UL>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="group___m_s_s___sema___a_p_i.html#gab94636a54d93f269ea923127560ea832"><param name="Name" value="mss_sema_wait"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="group___m_s_s___sema___a_p_i.html#ga6fc9c2908436a8892bbf6b376e304556"><param name="Name" value="MSS_SEMA_WAIT"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="group___m_s_s___sema___a_p_i.html#gab94636a54d93f269ea923127560ea832"><param name="Name" value="mss_sema_wait"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="group___m_s_s___sema___a_p_i.html#ga6fc9c2908436a8892bbf6b376e304556"><param name="Name" value="MSS_SEMA_WAIT"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="mss__hal__int_8h.html#a5186045f83218072d9e40f7f18141608"><param name="Name" value="MSS_TASK_BIT_POS"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="mss__hal__int_8h.html#a344973d320d5f61563a9fd39c1e83ea2"><param name="Name" value="mss_task_bits_t"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="group___m_s_s___sema___a_p_i.html#gab94636a54d93f269ea923127560ea832"><param name="Name" value="mss_sema_wait"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="group___m_s_s___general___a_p_i.html#ga89652a48906b6a57f9d1f9ca8aa8ed98"><param name="Name" value="MSS_TASK_CTX_STATE_INIT_VAL"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="group___m_s_s___general___a_p_i.html#ga89652a48906b6a57f9d1f9ca8aa8ed98"><param name="Name" value="mss.h"></OBJECT>
@@ -581,6 +574,7 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="dev__types_8h.html#aa90cac659d18e8ef6294c7ae337f6b58"><param name="Name" value="SUCCESS"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="dev__types_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d"><param name="Name" value="TRUE"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="_r_e_l__n_o_t_e_s__v_0_2_0.html"><param name="Name" value="v0.2.0 Release Notes"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="_r_e_l__n_o_t_e_s__v_0_2_1.html"><param name="Name" value="v0.2.1 Release Notes"></OBJECT>
 </UL>
 </BODY>
 </HTML>

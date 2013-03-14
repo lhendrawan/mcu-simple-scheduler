@@ -6,7 +6,7 @@
  * <p>
  * @b A1: Because i can :) .. no, kidding. . basically programming has always been a hobby and s passion for
  *        me personally. I have been collecting the basic concepts of this light-weight multi-tasking 
- *        system from my working experiences, and one night i just decided to start working on MSS.
+ *        system from my working experiences, and one night "voila!" i just decided to start working on MSS.
  * <br> <br>
  *
  * <p>
@@ -20,7 +20,7 @@
  * <p>
  * @b Q3: What is the maximum number of tasks running on MSS?
  * <p>
- * @b A3: Although it hasn't been really tested, MSS should be able to run either 8, 16, 32, and 64 tasks.
+ * @b A3: Although it hasn't been really tested, MSS should be able to run up to 32 tasks.
  *        Refer to mss_hal_int.h.
  * <br> <br>
  *
@@ -45,12 +45,11 @@
  * <img src="mss_ccs_import_project.png"/> 
  * <br> <br>
  *
+ * @b Q7: I have a question/feedback regarding MSS
  * <p>
- * @b Q7: What's wrong with the odd English here in MSS?
- * <p>
- * @b A7: Well.. English is not my native language, and sorry for any confussing sentences and wording. Would be
- *        glad to get any feedback on this "language issue" also :) 
- * <br> <br>
+ * @b A7: Please join and post the question/feedback on the 
+ *        <a href="https://groups.google.com/forum/?fromgroups&hl=en#!forum/mss-disc">MSS Discussion group</a>.
+ *        If you can't post it for any reason, you can try to contact me directly at lhend(dot)mss(at)gmail(dot)com
  *
  */ 
 

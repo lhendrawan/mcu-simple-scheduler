@@ -36,7 +36,7 @@
 *
 * @author   Leo Hendrawan
 * 
-* @remark   target device: MSP430G2452 on MSP-EXP430G2 Launchpad
+* @remark   target device: MSP430G2452 & MSP430G2553 on MSP-EXP430G2 Launchpad
 * 
 ******************************************************************************/
 

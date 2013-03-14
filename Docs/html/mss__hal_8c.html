@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>MSS(MCUSimpleScheduler): C:/Work/_SPARE_TIME/MSS/MSS_SRC/trunk/Sources/mss/templates/target/mss_hal.c File Reference</title>
+<title>MSS(MCUSimpleScheduler): C:/Work/_SPARE_TIME/MSS/GIT_SRC/mcu-simple-scheduler/Sources/mss/templates/target/mss_hal.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -17,7 +17,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">MSS(MCUSimpleScheduler)
-   &#160;<span id="projectnumber">v.0.2</span>
+   &#160;<span id="projectnumber">v.0.2.1</span>
    </div>
   </td>
  </tr>
@@ -66,12 +66,12 @@ Functions</h2></td></tr>
 <tr class="memdesc:aa50fc745a249b3c0cfdca757ed168344"><td class="mdescLeft">&#160;</td><td class="mdescRight">do sleep if no task is active - should return/wake up upon interrupt events  <a href="#aa50fc745a249b3c0cfdca757ed168344"></a><br/></td></tr>
 <tr class="memitem:a0bbb8649d0a159bf4c029b0900b42769"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mss__hal_8c.html#a0bbb8649d0a159bf4c029b0900b42769">mss_hal_trigger_sw_int</a> (void)</td></tr>
 <tr class="memdesc:a0bbb8649d0a159bf4c029b0900b42769"><td class="mdescLeft">&#160;</td><td class="mdescRight">trigger software interrupt - the triggered software interrupt shall call mss_scheduler to do the preemption  <a href="#a0bbb8649d0a159bf4c029b0900b42769"></a><br/></td></tr>
-<tr class="memitem:a0b757e1d81caaa3440b88f290e9d1903"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mss__hal_8c.html#a0b757e1d81caaa3440b88f290e9d1903">mss_get_highest_prio_task</a> (<a class="el" href="mss__hal__int_8h.html#a344973d320d5f61563a9fd39c1e83ea2">mss_task_bits_t</a> ready_bits)</td></tr>
+<tr class="memitem:a0b757e1d81caaa3440b88f290e9d1903"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mss__hal_8c.html#a0b757e1d81caaa3440b88f290e9d1903">mss_get_highest_prio_task</a> (mss_task_bits_t ready_bits)</td></tr>
 <tr class="memdesc:a0b757e1d81caaa3440b88f290e9d1903"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the highest priority task (LSB bit position of the task ready bits)  <a href="#a0b757e1d81caaa3440b88f290e9d1903"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>mcu simple scheduler HAL (hardware abstraction layer) module </p>
-<dl class="section version"><dt>Version:</dt><dd>0.2.0</dd></dl>
+<dl class="section version"><dt>Version:</dt><dd>0.2.1</dd></dl>
 <dl class="section author"><dt>Author:</dt><dd>Leo Hendrawan</dd></dl>
 <dl class="section remark"><dt>Remarks:</dt><dd>target device: </dd></dl>
 </div><hr/><h2>Function Documentation</h2>
@@ -82,7 +82,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">uint8_t mss_get_highest_prio_task </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="mss__hal__int_8h.html#a344973d320d5f61563a9fd39c1e83ea2">mss_task_bits_t</a>&#160;</td>
+          <td class="paramtype">mss_task_bits_t&#160;</td>
           <td class="paramname"><em>ready_bits</em></td><td>)</td>
           <td></td>
         </tr>
@@ -193,7 +193,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 29 2012 11:50:35 for MSS(MCUSimpleScheduler) by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Mar 14 2013 23:14:26 for MSS(MCUSimpleScheduler) by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.1
 </small></address>

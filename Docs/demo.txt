@@ -103,9 +103,10 @@
  * @page     MSS_TARGET_EXAMPLE_MSPEXP430G2 MSS Target Specific Examples for MSP-EXP430G2
  *
  * MSS target specific (hardware dependent) examples/demos for MSP-EXP430G2 Launchpad
+ * (now supporting MSP430G2452 and MSP430G2553)
  *
  * - LED_BOOSTER_PACK_DEMO_APP: 
- *           This is a demo of MSS running on MSP430G2452 target device on the
+ *           This is a demo of MSS running on MSP430G2452/MSP430G2553 target device on the
  *           MSP-EXP430G2 Launchpad with MSP-LED8x8-BOOSTERPACK from Olimex
  *           (https://www.olimex.com/dev/msp-led8x8.html).
  *           This demo shows how MSS can work with all features enabled.
@@ -114,7 +115,7 @@
  *           microphone to start/stop the buzzer playing a song.
  *
  * - LED_BOOSTERPACK_CASCADE_DEMO_APP: 
- *          This is a demo of MSS running on MSP430G2452 target device on the
+ *          This is a demo of MSS running on MSP430G2452/MSP430G2553 target device on the
  *           MSP-EXP430G2 Launchpad with MSP-LED8x8-BOOSTERPACK
  *           (https://www.olimex.com/dev/msp-led8x8.html) and MOD-LED8x8
  *           (https://www.olimex.com/dev/index.html) from Olimex.

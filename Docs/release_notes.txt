@@ -2,6 +2,7 @@
  * @page REL_NOTES Release Notes  
  *
  * @subpage REL_NOTES_V_0_2_0
+ * @subpage REL_NOTES_V_0_2_1
  */
 
 /** 
@@ -32,19 +33,26 @@
  * @page REL_NOTES_V_0_2_1  v0.2.1 Release Notes
  *
  *  @section NOTES Notes:
- *   - some improvement
+ *   - some improvements (see CHANGES section below)
+ *   - updating IDE versions:
+ *       - IAR EWB MSP430 version 5.51.6
+ *       - Code Composer Studio version 5.3.0.00090 - NOTE: importing CCS project shall 
+ *         be done by unchecking the "Copy projects into workspace" option
  *
  * @section CHANGES Changes:
  *   - improvement in timer module to avoid lost timer hardware tick
- *   - moving display and buzzer data from LED boosterpack demo to single file demo_cfg.h 
+ *   - flexible mss_task_bits_t data type which adapts to MSS_NUM_OF_TASKS (max 32 tasks)
+ *   - MSP-EXP430G2 supports MSP430G2452 and MSP430G2553
+ *   - moving display and buzzer data from MSP-EXP430G2 LED boosterpack demo to 
+ *     single file demo_cfg.h 
  *
  * @section BUG_FIX Bug fix: 
- *   -
+ *   - some typo bugs
  *
  * @section FUTURE_PLAN Future Plan:
  *   - Supporting MSP GCC compiler for MSP430 microcontrollers
  *   - New platform supports: 
  *      - C2000 Piccolo Launchpad
- *      - Stellaris ARM Cortex -M4F Launchpad 
+ *      - Stellaris ARM Cortex -M4F Launchpad (EK-LM4F120XL)
  *
  */
