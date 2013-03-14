@@ -1,5 +1,5 @@
 /** 
- * @page FAQ Frequently Asked Questions (FAQ) v0.2.0
+ * @page FAQ Frequently Asked Questions (FAQ) v0.2.1
  *
  * <p>
  * @b Q1: Why another embedded operating system/scheduler?
