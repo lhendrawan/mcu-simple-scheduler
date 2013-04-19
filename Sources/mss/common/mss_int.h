@@ -152,10 +152,12 @@ typedef struct _mss_tcb_t  mss_tcb_t;
  */
 #define MSS_INVALID_TASK_ID            (0xFF)
 
+#if (MSS_TASK_USE_TIMER == TRUE)
 /** MSS_SLEEP_NO_TIMEOUT
  *  sleep without timeout
  */
 #define MSS_SLEEP_NO_TIMEOUT           ((mss_timer_tick_t)-1)
+#endif /* (MSS_TASK_USE_TIMER == TRUE) */
 
 /** MSS_ASSERT
  *  mss assert function
@@ -316,7 +318,11 @@ void mss_hal_init(void);
 *             the function
 *
 ******************************************************************************/
+#if (MSS_TASK_USE_TIMER == TRUE)
 void mss_hal_sleep(mss_timer_tick_t sleep_timeout);
+#else
+void mss_hal_sleep(void);
+#endif /* (MSS_TASK_USE_TIMER == TRUE) */
 
 #if (MSS_PREEMPTIVE_SCHEDULING == TRUE)
 /**************************************************************************//**

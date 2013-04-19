@@ -165,7 +165,7 @@ void mss_run(void)
     #if (MSS_TASK_USE_TIMER == TRUE)
       mss_hal_sleep(mss_timer_get_next_tick());
     #else
-      mss_hal_sleep(MSS_SLEEP_NO_TIMEOUT);
+      mss_hal_sleep();
     #endif /* (MSS_TASK_USE_TIMER == TRUE) */
     }
 

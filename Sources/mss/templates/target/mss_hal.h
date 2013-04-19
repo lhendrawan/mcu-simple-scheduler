@@ -36,7 +36,7 @@
 *
 * @author   Leo Hendrawan
 * 
-* @remark   target device: MSP430G2452 on MSP-EXP430G2 Launchpad
+* @remark   target device:
 * 
 ******************************************************************************/
 
@@ -56,21 +56,6 @@
 //*****************************************************************************
 // Macros (defines) and data types 
 //*****************************************************************************
-
-/** mss_timer_tick_t
- *  mss timer tick data type - can be changed according to the application
- *  however notice that a timer can be only started with maximum tick value
- *  of half of the data type (e.g. 32767 for uint16_t, or
- *  2147483647 for uint32_t)
- */
-typedef uint16_t mss_timer_tick_t;
-
-#if (MSS_TASK_USE_EVENT == TRUE)
-/** mss_event_t
- *  mss event data type - can be changed if necessary
- */
-typedef uint8_t  mss_event_t;
-#endif /* (MSS_TASK_USE_EVENT == TRUE) */
 
 /** mss_int_flag_t
  *  interrupt flag buffer data type - should be able to accommodate the global

@@ -141,7 +141,11 @@ void mss_hal_init(void)
 *             the function
 *
 ******************************************************************************/
+#if (MSS_TASK_USE_TIMER == TRUE)
 void mss_hal_sleep(mss_timer_tick_t sleep_timeout)
+#else
+void mss_hal_sleep(void)
+#endif /* (MSS_TASK_USE_TIMER == TRUE) */
 {
 #if (MSS_TASK_USE_TIMER == TRUE)
   if(sleep_timeout != MSS_SLEEP_NO_TIMEOUT)
@@ -149,9 +153,6 @@ void mss_hal_sleep(mss_timer_tick_t sleep_timeout)
     // save delay timer ticks
     delay_timer_cnt = sleep_timeout;
   }
-#else
-  // make compiler quiet
-  sleep_timeout = sleep_timeout;
 #endif /* (MSS_TASK_USE_TIMER == TRUE) */
 
   // go to LPM0 to keep SMCLK generating WDT interrupt

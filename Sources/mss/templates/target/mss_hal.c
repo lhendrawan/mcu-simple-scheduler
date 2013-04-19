@@ -125,7 +125,11 @@ void mss_hal_init(void)
 *             the function
 *
 ******************************************************************************/
+#if (MSS_TASK_USE_TIMER == TRUE)
 void mss_hal_sleep(mss_timer_tick_t sleep_timeout)
+#else
+void mss_hal_sleep(void)
+#endif /* (MSS_TASK_USE_TIMER == TRUE) */
 {
 
 }
