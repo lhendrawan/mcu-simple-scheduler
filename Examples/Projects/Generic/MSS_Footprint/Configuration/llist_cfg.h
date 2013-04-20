@@ -64,7 +64,11 @@
  *  The application might increase the number of linked list if it wish to
  *  use the linked list (llist) module.
  */
+#if (MSS_TASK_USE_TIMER == TRUE)
 #define MAX_NUM_OF_LLIST         (1 + MSS_MAX_NUM_OF_MQUE + MSS_MAX_NUM_OF_MEM)
+#else
+#define MAX_NUM_OF_LLIST         (MSS_MAX_NUM_OF_MQUE + MSS_MAX_NUM_OF_MEM)
+#endif
 
 /** LLIST_DEBUG_MODE
  *  activate the debug mode of linked list (llist) module if TRUE. Can be

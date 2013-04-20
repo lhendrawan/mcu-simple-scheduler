@@ -47,6 +47,8 @@
 #include "dev_types.h"
 #include "llist.h"
 
+#if (MAX_NUM_OF_LLIST > 0)
+
 //*****************************************************************************
 // Global variables 
 //*****************************************************************************
@@ -422,3 +424,5 @@ static void ll_add(llist_t hdl, void* object, bool first)
     ((llist_hdr_t*)object)->next = NULL;
   }
 }
+
+#endif /* (MAX_NUM_OF_LLIST > 0) */
