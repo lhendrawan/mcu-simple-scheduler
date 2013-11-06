@@ -229,12 +229,13 @@ void llist_sort(llist_t hdl, int8_t (*comp_func)(void*, void*));
 *
 * @param[in]  hdl        handle of the linked list
 * @param[in]  callback   pointer to callback function to check the linked list
-*                        objects
+*                        objects. if it returns false, the function will abort
+*                        and return immediately
 *
 * @return     -
 *
 ******************************************************************************/
-void llist_check(llist_t hdl, void (*callback)(void*));
+void llist_check(llist_t hdl, bool (*callback)(void*));
 #endif /* (LLIST_DEBUG_MODE == TRUE) */
 
 /** @} LLIST API Functions */

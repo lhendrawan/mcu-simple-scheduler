@@ -61,11 +61,17 @@
 // data structure definition of llist_t
 struct llist_tbl_t {
   void *first;  // first object in the linked list
+#if (LLIST_ENABLE_DOUBLE_LINKED_LIST == TRUE)
+  void *last;   // last object in the linked list
+#endif  
 };
 
 // linked list data header
 typedef struct {
   void *next;
+#if (LLIST_ENABLE_DOUBLE_LINKED_LIST == TRUE)
+  void *prev;  
+#endif /* (LLIST_ENABLE_DOUBLE_LINKED_LIST == TRUE) */
 } llist_hdr_t;
 
 // table of linked list
@@ -109,8 +115,11 @@ llist_t llist_create(void)
 
     // initialize table item
     ret_hdl->first = NULL;
+#if (LLIST_ENABLE_DOUBLE_LINKED_LIST == TRUE)
+    ret_hdl->last = NULL;
+#endif /* (LLIST_ENABLE_DOUBLE_LINKED_LIST == TRUE) */
   }
-
+  
   return ret_hdl;
 }
 
@@ -207,8 +216,19 @@ void* llist_get_first(llist_t hdl)
 	  // set return value pointer
 	  ret_obj = hdl->first;
 
-    // set new pointer of the first object in linked list
-	  hdl->first = ((llist_hdr_t*)hdl->first)->next;
+  #if (LLIST_ENABLE_DOUBLE_LINKED_LIST == TRUE)
+    if(hdl->last == hdl->first)
+    {
+      // the only object in list, set pointers as NULL
+      hdl->first = NULL;
+      hdl->last = NULL;
+    }
+    else
+  #endif /* (LLIST_ENABLE_DOUBLE_LINKED_LIST == TRUE) */
+    {
+      // set new pointer of the first object in linked list
+      hdl->first = ((llist_hdr_t*)hdl->first)->next;    
+    }
   }
 
   return ret_obj;
@@ -229,7 +249,11 @@ void* llist_get_first(llist_t hdl)
 ******************************************************************************/
 void llist_remove(llist_t hdl, void* object)
 {
+#if (LLIST_ENABLE_DOUBLE_LINKED_LIST != TRUE)
   void* cur_obj, *prev_obj = NULL;
+#else
+  void* next_obj, *prev_obj = NULL;
+#endif
 
   // check parameters
   LLIST_ASSERT(hdl != LLIST_INVALID_HDL);
@@ -237,6 +261,7 @@ void llist_remove(llist_t hdl, void* object)
   // check whether there is an object in the linked list
   if(hdl->first != NULL)
   {
+#if (LLIST_ENABLE_DOUBLE_LINKED_LIST != TRUE)
     // point to the first object
     cur_obj = hdl->first;
 
@@ -244,23 +269,50 @@ void llist_remove(llist_t hdl, void* object)
     {
       if(cur_obj == object)
       {
-    	// object found, move to the next one
-    	if(prev_obj != NULL)
-    	{
-    	  ((llist_hdr_t*)prev_obj)->next = ((llist_hdr_t*)cur_obj)->next;
-    	}
-    	else
-    	{
-    	  // this must be the first object in the list
-        hdl->first = ((llist_hdr_t*)cur_obj)->next;
-    	}
-    	break;
+        // object found, move to the next one
+        if(prev_obj != NULL)
+        {
+          ((llist_hdr_t*)prev_obj)->next = ((llist_hdr_t*)cur_obj)->next;
+        }
+        else
+        {
+          // this must be the first object in the list
+          hdl->first = ((llist_hdr_t*)cur_obj)->next;
+        }
+        break;
       }
 
       // move to the next object in linked list
       prev_obj = cur_obj;
       cur_obj = ((llist_hdr_t*)cur_obj)->next;
     }
+#else
+    next_obj = ((llist_hdr_t*)object)->next;
+    prev_obj = ((llist_hdr_t*)object)->prev;
+    // check next object
+    if(next_obj != NULL)
+    {
+      ((llist_hdr_t*)next_obj)->prev = prev_obj;
+    }
+    else
+    {
+      // this must be the last object
+      LLIST_ASSERT(next_obj == hdl->last);
+      hdl->last = prev_obj;
+    }
+
+    // check prev object
+    if(prev_obj != NULL)
+    {
+      ((llist_hdr_t*)prev_obj)->next = next_obj;
+    }
+    else
+    {
+      // this must be the first object
+      LLIST_ASSERT(prev_obj == hdl->first);
+      hdl->first = next_obj;
+    }    
+#endif    
   }
 }
 
@@ -284,7 +336,10 @@ void llist_remove(llist_t hdl, void* object)
 ******************************************************************************/
 void llist_sort(llist_t hdl, int8_t (*comp_func)(void*, void*))
 {
-  void *last_obj1, *obj1, *obj2, *next_obj1, *next_obj2, *temp;
+#if (LLIST_ENABLE_DOUBLE_LINKED_LIST != TRUE)
+  void *last_obj1;
+#endif /* (LLIST_ENABLE_DOUBLE_LINKED_LIST != TRUE) */  
+  void  *obj1, *obj2, *next_obj1, *next_obj2, *temp;
   bool swapped;
 
   // check parameters
@@ -295,40 +350,61 @@ void llist_sort(llist_t hdl, int8_t (*comp_func)(void*, void*))
     // reset flag
     swapped = false;
 
+#if (LLIST_ENABLE_DOUBLE_LINKED_LIST != TRUE)
     for(last_obj1 = NULL, obj1 = hdl->first,
         obj2 = ((obj1 == NULL) ? NULL : ((llist_hdr_t*)obj1)->next);
         obj2 != NULL ;
         obj1 = next_obj1, obj2 = next_obj2)
+#else        
+    for(obj1 = hdl->first,
+        obj2 = ((obj1 == NULL) ? NULL : ((llist_hdr_t*)obj1)->next);
+        obj2 != NULL ;
+        obj1 = next_obj1, obj2 = next_obj2)
+#endif /* (LLIST_ENABLE_DOUBLE_LINKED_LIST != TRUE) */
     {
       if(comp_func(obj1, obj2) > 0)
       {
-        // swap the object
+        // swap the objects
         if(obj1 == hdl->first)
         {
           hdl->first = obj2;
         }
 
+        // update the next pointers
         temp = ((llist_hdr_t*)obj2)->next;
         ((llist_hdr_t*)obj2)->next = obj1;
         ((llist_hdr_t*)obj1)->next = temp;
 
+      #if (LLIST_ENABLE_DOUBLE_LINKED_LIST != TRUE)
         if(last_obj1 != NULL)
         {
           ((llist_hdr_t*)last_obj1)->next = obj2;
         }
 
-        // update pointers
+        // set pointers for next iterations
         last_obj1 = obj2;
         next_obj1 = obj1;
         next_obj2 = ((llist_hdr_t*)obj1)->next;
+      #else
+        // update the prev pointers
+        temp = ((llist_hdr_t*)obj1)->prev;
+        ((llist_hdr_t*)obj2)->prev = temp;
+        ((llist_hdr_t*)obj1)->prev = obj2;
+      
+        // set pointers for next iterations
+        next_obj1 = obj1;
+        next_obj2 = ((llist_hdr_t*)obj1)->next;
+      #endif /* (LLIST_ENABLE_DOUBLE_LINKED_LIST != TRUE) */
 
         // set flag
         swapped = true;
       }
       else
       {
-        // save the next pointer
+        // set pointers for next iterations
+      #if (LLIST_ENABLE_DOUBLE_LINKED_LIST != TRUE)
       	last_obj1 = obj1;
+      #endif /* (LLIST_ENABLE_DOUBLE_LINKED_LIST != TRUE) */
         next_obj1 = obj2;
         next_obj2 = ((llist_hdr_t*)obj2)->next;
       }
@@ -345,12 +421,13 @@ void llist_sort(llist_t hdl, int8_t (*comp_func)(void*, void*))
 *
 * @param[in]  hdl        handle of the linked list
 * @param[in]  callback   pointer to callback function to check the linked list
-*                        objects
+*                        objects. if it returns false, the function will abort
+*                        and return immediately
 *
 * @return     -
 *
 ******************************************************************************/
-void llist_check(llist_t hdl, void (*callback)(void*))
+void llist_check(llist_t hdl, bool (*callback)(void*))
 {
   void *obj = hdl->first;
 
@@ -360,10 +437,15 @@ void llist_check(llist_t hdl, void (*callback)(void*))
   while(obj != NULL)
   {
     // pass the object pointer to the callback function
-    callback(obj);
-
-    // go to next object
-    obj = ((llist_hdr_t*)obj)->next;
+    if(callback(obj) == false)
+    {
+      obj = NULL;
+    }
+    else
+    {
+      // go to next object
+      obj = ((llist_hdr_t*)obj)->next;
+    }
   }
 }
 #endif /* (LLIST_DEBUG_MODE == TRUE) */
@@ -393,6 +475,7 @@ void llist_check(llist_t hdl, void (*callback)(void*))
 ******************************************************************************/
 static void ll_add(llist_t hdl, void* object, bool first)
 {
+#if (LLIST_ENABLE_DOUBLE_LINKED_LIST != TRUE)
   void* cur_obj;
 
   // check parameters
@@ -423,6 +506,51 @@ static void ll_add(llist_t hdl, void* object, bool first)
     // mark the object as the end of the list
     ((llist_hdr_t*)object)->next = NULL;
   }
+#else
+  // check parameters
+  LLIST_ASSERT((hdl != LLIST_INVALID_HDL) && (object != NULL));
+
+  if(hdl->first == NULL)
+  {
+    // must be an empty list
+    LLIST_ASSERT(hdl->last == NULL);
+    
+    // put object as the only object in the list
+    hdl->first = object;
+    hdl->last = object;
+    
+    // set pointers of the object as NULL since it is the only object in list
+    ((llist_hdr_t*)object)->prev = NULL;
+    ((llist_hdr_t*)object)->next = NULL;
+  }
+  else if(first)
+  {
+    // must not be an empty list
+    LLIST_ASSERT((hdl->first != NULL) && (hdl->last != NULL));
+    
+    // re-arrange prev pointer of the current first object in the list
+    ((llist_hdr_t*)hdl->first)->prev = object;
+    
+    // put object as first object in the list
+    ((llist_hdr_t*)object)->next = hdl->first;
+    hdl->first = object;
+    ((llist_hdr_t*)object)->prev = NULL;
+  }
+  else
+  {
+    // must not be an empty list
+    LLIST_ASSERT((hdl->first != NULL) && (hdl->last != NULL));
+    
+    // re-arrange next pointer of the current last object in the list
+    ((llist_hdr_t*)hdl->last)->next = object;
+    
+    // put object as last object in the list
+    ((llist_hdr_t*)object)->prev = hdl->last;
+    hdl->last = object;
+    ((llist_hdr_t*)object)->next = NULL;
+  }
+#endif /* (LLIST_ENABLE_DOUBLE_LINKED_LIST != TRUE) */
 }
 
 #endif /* (MAX_NUM_OF_LLIST > 0) */
+
